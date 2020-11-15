@@ -19,7 +19,7 @@ export class AdminSpaceComponent implements OnInit {
   faCheck = faCheck;
   faTimes = faTimes;
 
-  constructor( private router: Router) {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
