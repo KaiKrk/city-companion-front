@@ -37,27 +37,15 @@ export class MemberFormComponent implements OnInit {
         surname: ['', Validators.required],
         email: ['', Validators.email],
         password: ['', Validators.required],
-        departureHour: ['', Validators.required]
-      }
-    );
-    this.homeAdressForm = this.formBuilder.group(
-      {
+        departureHour: ['', Validators.required],
         homeStreetNumber: ['', Validators.required],
         homeStreetName: ['', Validators.required],
-        homecity: ['', Validators.email],
+        city: ['', Validators.required],
         postalCode: ['', Validators.required],
-      }
-    );
-    this.workAdressForm = this.formBuilder.group(
-      {
         workStreetNumber: ['', Validators.required],
         workStreetName: ['', Validators.required],
         workCity: ['', Validators.required],
         workPostalCode : ['', Validators.required],
-      }
-    );
-    this.transportForm = this.formBuilder.group(
-      {
         transport: ['', Validators.required],
         transportLine: [''],
         departureStop: ['']
@@ -66,9 +54,6 @@ export class MemberFormComponent implements OnInit {
   }
   onSubmitForm() {
     const memberForm =  this.memberForm.value;
-    const homeAdressForm =  this.homeAdressForm.value;
-    const workAdressForm =  this.workAdressForm.value;
-    const transportForm =  this.transportForm.value;
     const member: Account = {
       name: memberForm.name,
       surname: memberForm.surname,
@@ -76,29 +61,29 @@ export class MemberFormComponent implements OnInit {
       password: memberForm.password,
       departureHour: memberForm.departureHour
     };
-    const homeAdress: AdressModel = {
-      streetNumber: homeAdressForm.streetNumber,
-      streetName: homeAdressForm.streetName,
-      city: homeAdressForm.city,
-      postalCode: homeAdressForm.postalCode,
-      isHomeAdress: homeAdressForm.isHomeAdress
+    const homeAddress: AdressModel = {
+      streetNumber: memberForm.homeStreetNumber,
+      streetName: memberForm.streetName,
+      city: memberForm.homecity,
+      postalCode: memberForm.postalCode,
+      isHomeAddress: memberForm.isHomeAdress
     };
-    const workAdress: AdressModel = {
-      streetNumber: workAdressForm.streetNumber,
-      streetName: workAdressForm.streetName,
-      city: workAdressForm.city,
-      postalCode: workAdressForm.postalCode,
-      isHomeAdress: workAdressForm.isHomeAdress
+    const workAddress: AdressModel = {
+      streetNumber: memberForm.streetNumber,
+      streetName: memberForm.streetName,
+      city: memberForm.city,
+      postalCode: memberForm.postalCode,
+      isHomeAddress: memberForm.isHomeAdress
     };
     const transport: TransportModel = {
-      transport : transportForm.transport,
-      transportLine: transportForm.transportLine,
-      departureStop:  transportForm.departureStop
+      transport : memberForm.transport,
+      transportLine: memberForm.transportLine,
+      departureStop:  memberForm.departureStop
     };
     const registration: RegistrationModel = {
       account: member,
-      homeAdress,
-      workAdress,
+      homeAddress,
+      workAddress,
       transport
     };
     this.memberService.addMember(registration);

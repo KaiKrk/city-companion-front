@@ -24,9 +24,9 @@ export class MemberService {
     this.saveMember(registration);
   }
 
-  getMembers() {
+  getAccounts() {
     this.httpClient
-      .get<any[]>(this.endpoint + '/members')
+      .get<any[]>(this.endpoint + '/accounts')
       .subscribe(
         (response) => {
           this.members = response;
@@ -40,7 +40,7 @@ export class MemberService {
 
   saveMember(member: RegistrationModel) {
     this.httpClient
-      .post(this.endpoint + '/saveMember', member)
+      .post(this.endpoint + '/saveAccount', member)
       .subscribe(
         () => {
           console.log('Enregistrement terminé !');

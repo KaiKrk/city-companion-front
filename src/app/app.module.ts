@@ -18,7 +18,6 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {MemberService} from './services/member.service';
 import {AuthService} from './services/auth.service';
 import {WelcomeComponent} from './welcome/welcome.component';
-import { AdminSpaceComponent } from './admin-space/admin-space.component';
 import {AuthGuard} from './services/auth-guard.service';
 import {JwtInterceptor} from './helpers/jwt.interceptor';
 import { CityCompanionDashboardComponent } from './city-companion-dashboard/city-companion-dashboard.component';
@@ -28,7 +27,6 @@ const appRoutes: Routes = [
   {path: '', component: WelcomeComponent},
   {path: 'memberForm', component: MemberFormComponent},
   {path: 'authentication', component: AuthenticationComponent},
-  {path: 'adminSpace', canActivate: [AuthGuard], component: AdminSpaceComponent},
   {path: 'dashboard', canActivate: [AuthGuard], component: CityCompanionDashboardComponent},
   {path: 'settings', canActivate: [AuthGuard], component: CityCompanionSettingsComponent}
 ];
@@ -39,7 +37,6 @@ const appRoutes: Routes = [
     MemberFormComponent,
     AuthenticationComponent,
     WelcomeComponent,
-    AdminSpaceComponent,
     CityCompanionDashboardComponent,
     CityCompanionSettingsComponent,
   ],

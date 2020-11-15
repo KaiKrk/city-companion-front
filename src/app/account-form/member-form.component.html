@@ -1,7 +1,7 @@
 <div class="card mt-5" >
   <div class="card-header">Inscription</div>
   <div class="card-body">
-<form [formGroup]="memberForm">
+<form [formGroup]="memberForm" (ngSubmit)="onSubmitForm()">
   <div class="form-group">
     <label for="surname">Nom de Famille</label>
     <input type="text" class="form-control" id="surname" formControlName="surname">
@@ -24,16 +24,16 @@
   </div>
   <p>--- Adresse de votre domicile ---</p>
   <div class="form-group">
-    <label for="password">Numero de Rue</label>
+    <label for="homeStreetNumber">Numero de Rue</label>
     <input type="number" class="form-control" id="homeStreetNumber" formControlName="homeStreetNumber">
   </div>
   <div class="form-group">
-    <label for="surname">Nom de Rue</label>
+    <label for="homeStreetName">Nom de Rue</label>
     <input type="text" class="form-control" id="homeStreetName" formControlName="homeStreetName">
   </div>
   <div class="form-group">
-    <label for="surname">Ville</label>
-    <input type="text" class="form-control" id="homecity" formControlName="homecity">
+    <label for="city">Ville</label>
+    <input type="text" class="form-control" id="city" formControlName="city">
   </div>
   <div class="form-group">
     <label for="surname">Code Postal</label>
@@ -41,23 +41,22 @@
   </div>
     <p>--- Adresse de votre Travail ---</p>
     <div class="form-group">
-      <label for="password">Numero de Rue</label>
+      <label for="workStreetNumber">Numero de Rue</label>
       <input type="number" class="form-control" id="workStreetNumber" formControlName="workStreetNumber">
     </div>
     <div class="form-group">
-      <label for="surname">Nom de Rue</label>
-      <input type="text" class="form-control" id="streetName" formControlName="workStreetName">
+      <label for="workStreetName">Nom de Rue</label>
+      <input type="text" class="form-control" id="workStreetName" formControlName="workStreetName">
     </div>
     <div class="form-group">
-      <label for="surname">Ville</label>
-      <input type="text" class="form-control" id="city" formControlName="workCity">
+      <label for="workCity">Ville</label>
+      <input type="text" class="form-control" id="workCity" formControlName="workCity">
     </div>
     <div class="form-group">
       <label for="surname">Code Postal</label>
       <input type="number"  max="99999" class="form-control" id="postalCode" formControlName="workPostalCode">
     </div>
-    <button class="btn btn-primary" type="submit" [disabled]="memberForm.invalid">Soumettre</button>
-    </form>
+
     <p>--- Moyen de transport ---</p>
     <select id="transport" (change)="onChange($event)" [(ngModel)]="transport" formControlName="transport">
       <option value="car">Voiture/Moto/Scooter</option>
@@ -76,6 +75,9 @@
         <input type="text" class="form-control" id="departureStop" formControlName="departureStop">
       </div>
     </div>
-    <button class="btn btn-primary" type="submit" [disabled]="memberForm.invalid" (submit)="onSubmitForm()">Soumettre</button>
+  <div class="text-center">
+    <button class="btn btn-success col-6 mt-3" type="submit" [disabled]="memberForm.invalid">Soumettre</button>
+  </div>
+  </form>
   </div>
 </div>

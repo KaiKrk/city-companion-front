@@ -3,5 +3,5 @@ export interface AdressModel {
   streetName: string;
   city: string;
   postalCode: number;
-  isHomeAdress: boolean;
+  isHomeAddress: boolean;
 }

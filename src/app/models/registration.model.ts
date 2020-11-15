@@ -4,8 +4,8 @@ import {TransportModel} from './transport.model';
 
 export interface RegistrationModel {
   account: Account;
-  homeAdress: AdressModel;
-  workAdress: AdressModel;
+  homeAddress: AdressModel;
+  workAddress: AdressModel;
   transport: TransportModel;
 
 }
