@@ -39,12 +39,13 @@ export class MemberService {
   }
 
   saveMember(member: RegistrationModel) {
+    console.log('new Member :' + JSON.stringify(member));
     this.httpClient
       .post(this.endpoint + '/saveAccount', member)
       .subscribe(
         () => {
           console.log('Enregistrement terminé !');
-          this.router.navigate(['../c']);
+          this.router.navigate(['../authentication']);
         },
         (error) => {
           console.log('Erreur ! : ' + error);

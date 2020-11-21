@@ -86,6 +86,7 @@ export class MemberFormComponent implements OnInit {
       workAddress,
       transport
     };
+    console.log('form complete');
     this.memberService.addMember(registration);
   }
 
