@@ -5,5 +5,5 @@ export interface Account {
   email: string;
   password?: string;
   token?: string;
-  departureHour?: string;
+  departureTime?: string;
 }

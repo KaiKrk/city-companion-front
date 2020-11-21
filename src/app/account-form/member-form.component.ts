@@ -59,21 +59,21 @@ export class MemberFormComponent implements OnInit {
       surname: memberForm.surname,
       email:  memberForm.email,
       password: memberForm.password,
-      departureHour: memberForm.departureHour
+      departureTime: memberForm.departureHour
     };
     const homeAddress: AdressModel = {
       streetNumber: memberForm.homeStreetNumber,
-      streetName: memberForm.streetName,
-      city: memberForm.homecity,
-      postalCode: memberForm.postalCode,
-      isHomeAddress: memberForm.isHomeAdress
-    };
-    const workAddress: AdressModel = {
-      streetNumber: memberForm.streetNumber,
-      streetName: memberForm.streetName,
+      streetName: memberForm.homeStreetName,
       city: memberForm.city,
       postalCode: memberForm.postalCode,
-      isHomeAddress: memberForm.isHomeAdress
+      isHomeAddress: true
+    };
+    const workAddress: AdressModel = {
+      streetNumber: memberForm.workStreetNumber,
+      streetName: memberForm.workStreetName,
+      city: memberForm.workCity,
+      postalCode: memberForm.workPostalCode,
+      isHomeAddress: false
     };
     const transport: TransportModel = {
       transport : memberForm.transport,
