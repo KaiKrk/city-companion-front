@@ -1,1 +1,83 @@
-<p>city-companion-settings works!</p>
+<div class="card mt-5" >
+  <div class="card-header">Paramètres du compte</div>
+  <div class="card-body">
+    <form [formGroup]="memberForm" (ngSubmit)="onSubmitForm()">
+      <div class="form-group">
+        <label for="surname">Nom de Famille</label>
+        <input type="text" class="form-control" id="surname" formControlName="surname">
+      </div>
+      <div class="form-group">
+        <label for="name">Prenom</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+      </div>
+      <label for="email">Email</label>
+      <div class="form-group">
+        <input type="text" class="form-control" id="email" formControlName="email">
+      </div>
+      <div class="form-group">
+        <label for="password">Mot de Passe</label>
+        <input type="text" class="form-control" id="password" formControlName="password">
+      </div>
+      <div class="form-group">
+        <label for="password">Heure de depart</label>
+        <input type="time" class="form-control" id="departureHour" formControlName="departureHour">
+      </div>
+      <p>--- Adresse de votre domicile ---</p>
+      <div class="form-group">
+        <label for="homeStreetNumber">Numero de Rue</label>
+        <input type="number" class="form-control" id="homeStreetNumber" formControlName="homeStreetNumber">
+      </div>
+      <div class="form-group">
+        <label for="homeStreetName">Nom de Rue</label>
+        <input type="text" class="form-control" id="homeStreetName" formControlName="homeStreetName">
+      </div>
+      <div class="form-group">
+        <label for="city">Ville</label>
+        <input type="text" class="form-control" id="city" formControlName="city">
+      </div>
+      <div class="form-group">
+        <label for="surname">Code Postal</label>
+        <input type="number"  max="99999" class="form-control" id="homePostalCode" formControlName="postalCode">
+      </div>
+      <p>--- Adresse de votre Travail ---</p>
+      <div class="form-group">
+        <label for="workStreetNumber">Numero de Rue</label>
+        <input type="number" class="form-control" id="workStreetNumber" formControlName="workStreetNumber">
+      </div>
+      <div class="form-group">
+        <label for="workStreetName">Nom de Rue</label>
+        <input type="text" class="form-control" id="workStreetName" formControlName="workStreetName">
+      </div>
+      <div class="form-group">
+        <label for="workCity">Ville</label>
+        <input type="text" class="form-control" id="workCity" formControlName="workCity">
+      </div>
+      <div class="form-group">
+        <label for="surname">Code Postal</label>
+        <input type="number"  max="99999" class="form-control" id="postalCode" formControlName="workPostalCode">
+      </div>
+
+      <p>--- Moyen de transport ---</p>
+      <select id="transport" (change)="onChange($event)" [(ngModel)]="transport" formControlName="transport">
+        <option value="car">Voiture/Moto/Scooter</option>
+        <option value="metros">Metro</option>
+        <option value="buses">Bus</option>
+        <option value="rers">RER</option>
+        <option value="tramways">Tramway</option>
+      </select>
+      <div *ngIf="transport !== 'car'">
+        <div class="form-group">
+          <label for="transportLine">Numero de la Ligne</label>
+          <input type="text" class="form-control" id="transportLine" formControlName="transportLine">
+        </div>
+        <div class="form-group">
+          <label for="departureStop">Nom de votre Arrêt de départ</label>
+          <input type="text" class="form-control" id="departureStop" formControlName="departureStop">
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-success col-6 mt-3" type="submit" [disabled]="memberForm.invalid">Soumettre</button>
+      </div>
+    </form>
+  </div>
+</div>

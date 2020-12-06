@@ -53,5 +53,20 @@ export class MemberService {
       );
   }
 
+  updateMember(member: RegistrationModel) {
+    console.log('update Member :' + JSON.stringify(member));
+    this.httpClient
+      .post(this.endpoint + '/updateAccount', member)
+      .subscribe(
+        () => {
+          console.log('Mise à jour terminé terminé !');
+          this.router.navigate(['../dashboard']);
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
+  }
+
 
 }

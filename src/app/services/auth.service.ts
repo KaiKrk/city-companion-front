@@ -37,7 +37,7 @@ endpoint: string =  environment.APIEndpoint;
           localStorage.setItem('currentUser', JSON.stringify(this.member));
           this.emitMemberSubject();
           console.log('Connection !');
-          this.router.navigate(['../bookList']);
+          this.router.navigate(['../dashboard']);
         },
         (error) => {
           console.log('Erreur ! : ' + error);

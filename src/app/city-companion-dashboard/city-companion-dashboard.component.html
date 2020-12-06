@@ -7,41 +7,60 @@
 </head>
 
 <body>
-<div class="row">
-  <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="card mt-2 tab-card">
+      <div class="card-header tab-card-header">
+        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="One" aria-selected="true">Méteo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="Two" aria-selected="false">Qualité de L'air</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="three-tab" data-toggle="tab" href="#three" role="tab" aria-controls="Three" aria-selected="false">Traffic routier</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="four-tab" data-toggle="tab" href="#four" role="tab" aria-controls="Four" aria-selected="false">Transport en commun</a>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
+          <div class="card-body">
+            <h5 class="card-title">Meteo</h5>
+            <p class="card-text">Temps : </p>
+            <p class="card-text">Température : </p>
+            <a href="#" class="btn btn-primary">Plus d'information</a>
+          </div>
+        </div>
+        <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
+          <div class="card-body">
+            <h5 class="card-title">Qualite de l'air</h5>
+            <p class="card-text">Index : </p>
+            <p class="card-text">Qualité : </p>
+            <p class="card-text">Concentration de particules : </p>
+            <p class="card-text">PM2.5 : </p> <p class="card-text">PM10 : </p>  <p class="card-text">O2 : </p>
+
+            <a href="#" class="btn btn-primary">Plus d'information</a>
+          </div>
+        </div>
+        <div class="tab-pane fade show  p-3" id="three" role="tabpanel" aria-labelledby="three-tab">
+          <h5 class="card-title">Traffic Routier</h5>
+          <div class="card-body">
+            <h5 class="card-title">Condition de circulation</h5>
+            <p class="card-text">Etat du traffic :</p>
+            <a href="#" class="btn btn-primary">Plus d'information</a>
+          </div>
+        </div>
+        <div class="tab-pane fade show  p-3" id="four" role="tabpanel" aria-labelledby="four-tab">
+          <h5 class="card-title">Transport en commun</h5>
+          <div class="card-body">
+            <h5 class="card-title">Condition du reseau de transport en commun</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-  <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-</div>
 </body>
 </html>
