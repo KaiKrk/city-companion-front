@@ -18,10 +18,10 @@
         <a class="nav-link" [routerLink]="'authentication'" (click)="isMenuCollapsed = true" *ngIf="!currentUser">Connection</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" [routerLink]="'bookList'" (click)="isMenuCollapsed = true" *ngIf="currentUser">Dashboard</a>
+        <a class="nav-link" [routerLink]="'dashboard'" (click)="isMenuCollapsed = true" *ngIf="currentUser">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="'memberList'" (click)="isMenuCollapsed = true" *ngIf="currentUser">Parametres</a>
+        <a class="nav-link" [routerLink]="'settings'" (click)="isMenuCollapsed = true" *ngIf="currentUser">Parametres</a>
       </li>
 
       <li class="nav-item ">

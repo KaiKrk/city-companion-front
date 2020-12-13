@@ -11,6 +11,7 @@ export class MemberService {
   endpoint: string =  environment.APIEndpoint;
   private member: Account[] = [];
   memberSubject = new Subject<any[]>();
+  memberInfoSubject = new Subject<RegistrationModel>();
 
   private members = [] ;
 
@@ -24,6 +25,19 @@ export class MemberService {
     this.saveMember(registration);
   }
 
+  getMemberInfo(id: number) {
+    this.httpClient
+      .get<any[]>(this.endpoint + '/account/' + id)
+      .subscribe(
+        (response) => {
+          this.members = response;
+          this.emitMemberSubject();
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
+  }
   getAccounts() {
     this.httpClient
       .get<any[]>(this.endpoint + '/accounts')

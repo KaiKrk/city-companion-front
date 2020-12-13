@@ -6,6 +6,8 @@ import {Account} from '../models/account.model';
 import {AdressModel} from '../models/adress.model';
 import {TransportModel} from '../models/transport.model';
 import {RegistrationModel} from '../models/registration.model';
+import {AuthService} from '../services/auth.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-city-companion-settings',
@@ -16,12 +18,41 @@ export class CityCompanionSettingsComponent implements OnInit {
 
   memberForm: FormGroup;
   transport: string;
+  connectedMember: RegistrationModel;
+  settingsSubscription: Subscription;
   constructor(private formBuilder: FormBuilder,
               private memberService: MemberService,
-              private router: Router) { }
+              private authenticationService: AuthService,
+              private router: Router) {}
+
+
+  currentUser = this.authenticationService.currentUserValue;
 
   ngOnInit(): void {
     this.initForm();
+    this.memberService.getMemberInfo(this.currentUser.id);
+    this.settingsSubscription = this.memberService.memberInfoSubject.subscribe(
+      (registrationModel: RegistrationModel) => {
+              this.connectedMember = registrationModel;
+    }
+    );
+    this.memberForm.get('id').setValue(this.connectedMember.account.id);
+    this.memberForm.get('surname').setValue(this.connectedMember.account.surname);
+    this.memberForm.get('name').setValue(this.connectedMember.account.name);
+    this.memberForm.get('email').setValue(this.connectedMember.account.email);
+    this.memberForm.get('departureHour').setValue(this.connectedMember.account.departureTime);
+    this.memberForm.get('homeStreetNumber').setValue(this.connectedMember.homeAddress.streetNumber);
+    this.memberForm.get('homeStreetName').setValue(this.connectedMember.homeAddress.streetName);
+    this.memberForm.get('city').setValue(this.connectedMember.homeAddress.city);
+    this.memberForm.get('homePostalCode').setValue(this.connectedMember.homeAddress.postalCode);
+    this.memberForm.get('workStreetNumber').setValue(this.connectedMember.workAddress.streetNumber);
+    this.memberForm.get('workStreetName').setValue(this.connectedMember.workAddress.streetName);
+    this.memberForm.get('workCity').setValue(this.connectedMember.workAddress.city);
+    this.memberForm.get('workPostalCode').setValue(this.connectedMember.workAddress.postalCode);
+    this.memberForm.get('transport').setValue(this.connectedMember.transport.transport);
+    this.memberForm.get('transportLine').setValue(this.connectedMember.transport.transportLine);
+    this.memberForm.get('departureStop').setValue(this.connectedMember.transport.departureStop);
+
   }
 
   onChange(event) {
