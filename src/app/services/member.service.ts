@@ -27,7 +27,7 @@ export class MemberService {
 
   getMemberInfo(id: number) {
     this.httpClient
-      .get<any[]>(this.endpoint + '/account/' + id)
+      .get<any[]>(this.endpoint + '/account?id=' + id)
       .subscribe(
         (response) => {
           this.members = response;
