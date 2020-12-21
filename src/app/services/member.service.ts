@@ -12,8 +12,10 @@ export class MemberService {
   private member: Account[] = [];
   memberSubject = new Subject<any[]>();
   memberInfoSubject = new Subject<RegistrationModel>();
+  memberInfoSubject2 = new Subject<any[]>();
 
   private members = [] ;
+  private memberInfo = [];
 
   constructor(private httpClient: HttpClient, private router: Router) {
   }
@@ -21,11 +23,22 @@ export class MemberService {
   emitMemberSubject() {
     this.memberSubject.next(this.members.slice());
   }
+
+  emitMemberInfoSubject() {
+    console.log('le Subject avant' + this.memberInfoSubject);
+    // @ts-ignore
+    this.memberInfoSubject.next(this.memberInfo);
+    console.log('le Subject ' + this.memberInfoSubject);
+  }
+
+  emitMemberInfoSubject2() {
+    this.memberInfoSubject2.next(this.memberInfo);
+  }
   addMember(registration: RegistrationModel) {
     this.saveMember(registration);
   }
 
-  getMemberInfo(id: number) {
+  getMember(id: number) {
     this.httpClient
       .get<any[]>(this.endpoint + '/account?id=' + id)
       .subscribe(
@@ -37,6 +50,22 @@ export class MemberService {
           console.log('Erreur ! : ' + error);
         }
       );
+  }
+  getMemberInfo(id: number) {
+    this.httpClient
+      .get<any[]>(this.endpoint + '/account?id=' + id)
+      .subscribe(
+        (response) => {
+          this.memberInfo = response;
+          console.log(this.memberInfo);
+          this.emitMemberInfoSubject();
+          this.emitMemberInfoSubject2();
+        },
+        (error) => {
+          console.log('Erreur ! : ' + error);
+        }
+      );
+    return this.memberInfo;
   }
   getAccounts() {
     this.httpClient

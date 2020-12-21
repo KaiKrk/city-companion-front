@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DashboardService} from '../services/dashboard.service';
+import {DashboardInformations} from '../models/informations/DashboardInformations';
 
 @Component({
   selector: 'app-city-companion-dashboard',
@@ -7,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CityCompanionDashboardComponent implements OnInit {
 
-  constructor() { }
+  dashboardInformation: DashboardInformations;
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
   }

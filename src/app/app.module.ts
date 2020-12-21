@@ -22,6 +22,7 @@ import {AuthGuard} from './services/auth-guard.service';
 import {JwtInterceptor} from './helpers/jwt.interceptor';
 import { CityCompanionDashboardComponent } from './city-companion-dashboard/city-companion-dashboard.component';
 import { CityCompanionSettingsComponent } from './city-companion-settings/city-companion-settings.component';
+import {DashboardService} from './services/dashboard.service';
 
 const appRoutes: Routes = [
   {path: '', component: WelcomeComponent},
@@ -51,7 +52,7 @@ const appRoutes: Routes = [
     NgbCollapseModule,
     ReactiveFormsModule,
   ],
-  providers: [ MemberService, , AuthService, AuthGuard,
+  providers: [ MemberService, , AuthService, AuthGuard, DashboardService,
     HttpClient,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]

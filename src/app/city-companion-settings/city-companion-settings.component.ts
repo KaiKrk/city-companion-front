@@ -8,6 +8,7 @@ import {TransportModel} from '../models/transport.model';
 import {RegistrationModel} from '../models/registration.model';
 import {AuthService} from '../services/auth.service';
 import {Subscription} from 'rxjs';
+import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-city-companion-settings',
@@ -19,6 +20,8 @@ export class CityCompanionSettingsComponent implements OnInit {
   memberForm: FormGroup;
   transport: string;
   connectedMember: RegistrationModel;
+  connectedMember2;
+  cM ;
   settingsSubscription: Subscription;
   constructor(private formBuilder: FormBuilder,
               private memberService: MemberService,
@@ -28,16 +31,26 @@ export class CityCompanionSettingsComponent implements OnInit {
 
   currentUser = this.authenticationService.currentUserValue;
 
-  ngOnInit(): void {
+ async ngOnInit(): Promise<void> {
     this.initForm();
-    this.memberService.getMemberInfo(this.currentUser.id);
-    this.settingsSubscription = this.memberService.memberInfoSubject.subscribe(
+    this.cM = await this.memberService.getMemberInfo(this.currentUser.id);
+
+    this.settingsSubscription = await this.memberService.memberInfoSubject.subscribe(
       (registrationModel: RegistrationModel) => {
+              console.log('RM ' + registrationModel);
               this.connectedMember = registrationModel;
-    }
+    }),
+    // @ts-ignore
+    this.settingsSubscription = await this.memberService.memberInfoSubject2.subscribe(
+      (registrationModel: any[]) => {
+        console.log('RM2 ' + registrationModel);
+        console.log('CM2 B ' + this.connectedMember2);
+        this.connectedMember2 = registrationModel;
+        console.log('CM2 ' + this.connectedMember2);
+      }
     );
-    this.memberForm.get('id').setValue(this.connectedMember.account.id);
-    this.memberForm.get('surname').setValue(this.connectedMember.account.surname);
+    console.log('cM ' + this.cM);
+    this.memberForm.get('surname').setValue(this.cM.account.surname);
     this.memberForm.get('name').setValue(this.connectedMember.account.name);
     this.memberForm.get('email').setValue(this.connectedMember.account.email);
     this.memberForm.get('departureHour').setValue(this.connectedMember.account.departureTime);
