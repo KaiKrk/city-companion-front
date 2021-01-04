@@ -5,17 +5,20 @@ import {Account} from '../models/account.model';
 import {environment} from '../../environments/environment.prod';
 import {Router} from '@angular/router';
 import {RegistrationModel} from '../models/registration.model';
+import {AccountInfo} from '../models/account.info.model';
 
 @Injectable()
 export class MemberService {
   endpoint: string =  environment.APIEndpoint;
   private member: Account[] = [];
   memberSubject = new Subject<any[]>();
-  memberInfoSubject = new Subject<RegistrationModel>();
+  memberInfoSubject = new Subject<AccountInfo>();
   memberInfoSubject2 = new Subject<any[]>();
 
   private members = [] ;
-  private memberInfo = [];
+  public accountInfo: AccountInfo;
+  public memberInfoR: RegistrationModel[];
+  coco: string;
 
   constructor(private httpClient: HttpClient, private router: Router) {
   }
@@ -25,15 +28,9 @@ export class MemberService {
   }
 
   emitMemberInfoSubject() {
-    console.log('le Subject avant' + this.memberInfoSubject);
-    // @ts-ignore
-    this.memberInfoSubject.next(this.memberInfo);
-    console.log('le Subject ' + this.memberInfoSubject);
+    this.memberInfoSubject.next(this.accountInfo);
   }
 
-  emitMemberInfoSubject2() {
-    this.memberInfoSubject2.next(this.memberInfo);
-  }
   addMember(registration: RegistrationModel) {
     this.saveMember(registration);
   }
@@ -53,19 +50,20 @@ export class MemberService {
   }
   getMemberInfo(id: number) {
     this.httpClient
-      .get<any[]>(this.endpoint + '/account?id=' + id)
+      .get<any>(this.endpoint + '/account?id=' + id)
       .subscribe(
         (response) => {
-          this.memberInfo = response;
-          console.log(this.memberInfo);
+          this.accountInfo = response;
+          console.log('response '  + response);
+          console.log(this.accountInfo);
           this.emitMemberInfoSubject();
-          this.emitMemberInfoSubject2();
+          return this.accountInfo;
         },
         (error) => {
           console.log('Erreur ! : ' + error);
         }
       );
-    return this.memberInfo;
+    return this.accountInfo;
   }
   getAccounts() {
     this.httpClient

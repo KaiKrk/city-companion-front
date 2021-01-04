@@ -8,7 +8,7 @@ import {TransportModel} from '../models/transport.model';
 import {RegistrationModel} from '../models/registration.model';
 import {AuthService} from '../services/auth.service';
 import {Subscription} from 'rxjs';
-import {any} from 'codelyzer/util/function';
+import {AccountInfo} from '../models/account.info.model';
 
 @Component({
   selector: 'app-city-companion-settings',
@@ -20,7 +20,8 @@ export class CityCompanionSettingsComponent implements OnInit {
   memberForm: FormGroup;
   transport: string;
   connectedMember: RegistrationModel;
-  connectedMember2;
+  accountInfo: AccountInfo;
+  connectedMember2 = [];
   cM ;
   settingsSubscription: Subscription;
   constructor(private formBuilder: FormBuilder,
@@ -31,40 +32,37 @@ export class CityCompanionSettingsComponent implements OnInit {
 
   currentUser = this.authenticationService.currentUserValue;
 
- async ngOnInit(): Promise<void> {
+  ngOnInit() {
     this.initForm();
-    this.cM = await this.memberService.getMemberInfo(this.currentUser.id);
+    this.accountInfo = this.memberService.getMemberInfo(this.currentUser.id);
 
-    this.settingsSubscription = await this.memberService.memberInfoSubject.subscribe(
+    this.settingsSubscription =  this.memberService.memberInfoSubject.subscribe(
       (registrationModel: RegistrationModel) => {
               console.log('RM ' + registrationModel);
               this.connectedMember = registrationModel;
     }),
     // @ts-ignore
-    this.settingsSubscription = await this.memberService.memberInfoSubject2.subscribe(
+    this.settingsSubscription =  this.memberService.memberInfoSubject2.subscribe(
       (registrationModel: any[]) => {
-        console.log('RM2 ' + registrationModel);
-        console.log('CM2 B ' + this.connectedMember2);
         this.connectedMember2 = registrationModel;
-        console.log('CM2 ' + this.connectedMember2);
       }
     );
-    console.log('cM ' + this.cM);
-    this.memberForm.get('surname').setValue(this.cM.account.surname);
-    this.memberForm.get('name').setValue(this.connectedMember.account.name);
-    this.memberForm.get('email').setValue(this.connectedMember.account.email);
-    this.memberForm.get('departureHour').setValue(this.connectedMember.account.departureTime);
-    this.memberForm.get('homeStreetNumber').setValue(this.connectedMember.homeAddress.streetNumber);
-    this.memberForm.get('homeStreetName').setValue(this.connectedMember.homeAddress.streetName);
-    this.memberForm.get('city').setValue(this.connectedMember.homeAddress.city);
-    this.memberForm.get('homePostalCode').setValue(this.connectedMember.homeAddress.postalCode);
-    this.memberForm.get('workStreetNumber').setValue(this.connectedMember.workAddress.streetNumber);
-    this.memberForm.get('workStreetName').setValue(this.connectedMember.workAddress.streetName);
-    this.memberForm.get('workCity').setValue(this.connectedMember.workAddress.city);
-    this.memberForm.get('workPostalCode').setValue(this.connectedMember.workAddress.postalCode);
-    this.memberForm.get('transport').setValue(this.connectedMember.transport.transport);
-    this.memberForm.get('transportLine').setValue(this.connectedMember.transport.transportLine);
-    this.memberForm.get('departureStop').setValue(this.connectedMember.transport.departureStop);
+    console.log('value checker  ' + this.accountInfo.transport.transport);
+    this.memberForm.get('surname').setValue(this.accountInfo.account.surname);
+    this.memberForm.get('name').setValue(this.accountInfo.account.name);
+    this.memberForm.get('email').setValue(this.accountInfo.account.email);
+    this.memberForm.get('departureHour').setValue(this.accountInfo.account.departureTime);
+    this.memberForm.get('homeStreetNumber').setValue(this.accountInfo.homeAddress.streetNumber);
+    this.memberForm.get('homeStreetName').setValue(this.accountInfo.homeAddress.streetName);
+    this.memberForm.get('city').setValue(this.accountInfo.homeAddress.city);
+    this.memberForm.get('postalCode').setValue(this.accountInfo.homeAddress.postalCode);
+    this.memberForm.get('workStreetNumber').setValue(this.accountInfo.workAddress.streetNumber);
+    this.memberForm.get('workStreetName').setValue(this.accountInfo.workAddress.streetName);
+    this.memberForm.get('workCity').setValue(this.accountInfo.workAddress.city);
+    this.memberForm.get('workPostalCode').setValue(this.accountInfo.workAddress.postalCode);
+    this.memberForm.get('transport').setValue(this.accountInfo.transport.transport);
+    this.memberForm.get('transportLine').setValue(this.accountInfo.transport.transportLine);
+    this.memberForm.get('departureStop').setValue(this.accountInfo.transport.departureStop);
 
   }
 
