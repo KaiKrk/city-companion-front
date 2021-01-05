@@ -60,7 +60,7 @@ export class CityCompanionSettingsComponent implements OnInit {
     this.memberForm.get('workStreetName').setValue(this.accountInfo.workAddress.streetName);
     this.memberForm.get('workCity').setValue(this.accountInfo.workAddress.city);
     this.memberForm.get('workPostalCode').setValue(this.accountInfo.workAddress.postalCode);
-    this.memberForm.get('transport').setValue(this.accountInfo.transport.transport);
+    this.transport = this.accountInfo.transport.transport;
     this.memberForm.get('transportLine').setValue(this.accountInfo.transport.transportLine);
     this.memberForm.get('departureStop').setValue(this.accountInfo.transport.departureStop);
 
@@ -76,7 +76,7 @@ export class CityCompanionSettingsComponent implements OnInit {
         name: ['', Validators.required],
         surname: ['', Validators.required],
         email: ['', Validators.email],
-        password: ['', Validators.required],
+        password: [''],
         departureHour: ['', Validators.required],
         homeStreetNumber: ['', Validators.required],
         homeStreetName: ['', Validators.required],
