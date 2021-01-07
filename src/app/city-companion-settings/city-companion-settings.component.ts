@@ -95,6 +95,7 @@ export class CityCompanionSettingsComponent implements OnInit {
   onSubmitForm() {
     const memberForm =  this.memberForm.value;
     const member: Account = {
+      id: this.accountInfo.account.id,
       name: memberForm.name,
       surname: memberForm.surname,
       email:  memberForm.email,
@@ -102,6 +103,7 @@ export class CityCompanionSettingsComponent implements OnInit {
       departureTime: memberForm.departureHour
     };
     const homeAddress: AdressModel = {
+      id: this.accountInfo.homeAddress.id,
       streetNumber: memberForm.homeStreetNumber,
       streetName: memberForm.homeStreetName,
       city: memberForm.city,
@@ -109,6 +111,7 @@ export class CityCompanionSettingsComponent implements OnInit {
       isHomeAddress: true
     };
     const workAddress: AdressModel = {
+      id: this.accountInfo.workAddress.id,
       streetNumber: memberForm.workStreetNumber,
       streetName: memberForm.workStreetName,
       city: memberForm.workCity,
@@ -116,6 +119,7 @@ export class CityCompanionSettingsComponent implements OnInit {
       isHomeAddress: false
     };
     const transport: TransportModel = {
+      id: this.accountInfo.transport.id,
       transport : memberForm.transport,
       transportLine: memberForm.transportLine,
       departureStop:  memberForm.departureStop
