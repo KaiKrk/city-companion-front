@@ -28,39 +28,41 @@
         <div class="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
           <div class="card-body">
             <h5 class="card-title">Meteo</h5>
-            <p class="card-text">Temps : </p>
-            <p class="card-text">Température : </p>
-            <a href="#" class="btn btn-primary">Plus d'information</a>
+            <p class="card-text">Pluie : {{dashboardInfo.weather.rain}}  ({{dashboardInfo.weather.rainProbability}})</p>
+            <p class="card-text">Température : {{dashboardInfo.weather.temperature}}</p>
+            <p class="card-text">Température ressentie: {{dashboardInfo.weather.feelsLike}}</p>
           </div>
         </div>
         <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
           <div class="card-body">
-            <h5 class="card-title">Qualite de l'air</h5>
-            <p class="card-text">Index : </p>
-            <p class="card-text">Qualité : </p>
+            <h5 class="card-title">Qualite de l'air </h5>
+            <p class="card-text">Index : {{dashboardInfo.airQuality.index}}</p>
+            <p class="card-text">Qualité : {{dashboardInfo.airQuality.quality}}</p>
             <p class="card-text">Concentration de particules : </p>
-            <p class="card-text">PM2.5 : </p> <p class="card-text">PM10 : </p>  <p class="card-text">O2 : </p>
-
-            <a href="#" class="btn btn-primary">Plus d'information</a>
+            <p class="card-text">PM2.5 : {{dashboardInfo.airQuality.pm25}}</p> <p class="card-text">PM10 : {{dashboardInfo.airQuality.pm10}}</p>  <p class="card-text">O2 : {{dashboardInfo.airQuality.o3}}</p>
           </div>
         </div>
         <div class="tab-pane fade show  p-3" id="three" role="tabpanel" aria-labelledby="three-tab">
           <h5 class="card-title">Traffic Routier</h5>
           <div class="card-body">
+            <p class="card-text">Votre Adresse : {{dashboardInfo.carTraffic.address}}</p>
+            <p class="card-text">Destination : {{dashboardInfo.carTraffic.destination}}</p>
             <h5 class="card-title">Condition de circulation</h5>
-            <p class="card-text">Etat du traffic :</p>
-            <p class="card-text">Temps de parcours normal :</p>
-            <p class="card-text">Temps de parcours estimé aujourd'hui :</p>
-            <a href="#" class="btn btn-primary">Plus d'information</a>
+            <p class="card-text">Temps de parcours normal : {{dashboardInfo.carTraffic.travelTime}}</p>
+            <p class="card-text">Temps de parcours estimé actuel : {{dashboardInfo.carTraffic.estimatedTravelTime}}</p>
           </div>
         </div>
         <div class="tab-pane fade show  p-3" id="four" role="tabpanel" aria-labelledby="four-tab">
           <h5 class="card-title">Transport en commun</h5>
           <div class="card-body">
             <h5 class="card-title">Condition du reseau de transport en commun</h5>
-            <p class="card-text">Etat de la ligne :</p>
-            <p class="card-text">Prochain départ :</p>
-            <p class="card-text">Le Suivant :  </p>
+            <p class="card-text col-6">Arret : {{dashboardInfo.publicTransport.station}}</p>
+            <p class="card-text">Etat de la ligne : {{dashboardInfo.publicTransport.status}}</p>
+            <p class="card-text">Prochains départ :   </p>
+            <tr *ngFor="let departure of dashboardInfo.publicTransport.departures">
+              <td>{{departure.destination}}</td>
+              <td>{{departure.message}}</td>
+            </tr>
           </div>
         </div>
       </div>

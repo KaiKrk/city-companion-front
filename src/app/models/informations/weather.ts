@@ -1,4 +1,6 @@
 export interface Weather {
-  weather: string;
-  temperature: string;
+  rain: string;
+  rainProbability: number;
+  temperature: number;
+  feelsLike: number;
 }

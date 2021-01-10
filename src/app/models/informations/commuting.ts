@@ -1,5 +1,7 @@
+import {Departures} from './Departures';
+
 export interface Commuting {
+  station: string;
   status: string;
-  nextTransportIn: number;
-  secondTransportIn: number;
+  departures: Departures;
 }

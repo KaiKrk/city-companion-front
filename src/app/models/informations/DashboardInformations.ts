@@ -8,7 +8,7 @@ export interface DashboardInformations {
 
   weather: Weather;
   airQuality: AirQuality;
-  traffic: Traffic;
-  commuting: Commuting;
+  carTraffic: Traffic;
+  publicTransport: Commuting;
 
 }

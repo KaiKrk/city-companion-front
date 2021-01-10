@@ -1,6 +1,7 @@
 export interface Traffic {
-  status: string;
-  travelingTime: number;
-  estimatedTravelingTime: number;
+  address: string;
+  destination: string;
+  travelTime: number;
+  estimatedTravelTime: number;
 
 }

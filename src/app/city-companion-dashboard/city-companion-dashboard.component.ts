@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {DashboardService} from '../services/dashboard.service';
 import {DashboardInformations} from '../models/informations/DashboardInformations';
+import {MemberService} from '../services/member.service';
+import {AuthService} from '../services/auth.service';
 
 @Component({
   selector: 'app-city-companion-dashboard',
@@ -9,10 +11,15 @@ import {DashboardInformations} from '../models/informations/DashboardInformation
 })
 export class CityCompanionDashboardComponent implements OnInit {
 
-  dashboardInformation: DashboardInformations;
-  constructor(private dashboardService: DashboardService) { }
+  dashboardInfo: DashboardInformations;
+  constructor(private dashboardService: DashboardService,
+              private memberService: MemberService,
+              private authenticationService: AuthService) { }
+  currentUser = this.authenticationService.currentUserValue;
+
 
   ngOnInit(): void {
+    this.dashboardInfo = this.dashboardService.getDashboardInfo(this.currentUser.id);
   }
 
 }
