@@ -31,6 +31,7 @@
             <p class="card-text">Pluie : {{dashboardInfo.weather.rain}}  ({{dashboardInfo.weather.rainProbability}}%)</p>
             <p class="card-text">Température : {{dashboardInfo.weather.temperature}}</p>
             <p class="card-text">Température ressentie: {{dashboardInfo.weather.feelsLike}}</p>
+            <p class="card-text float-right">Date : {{dashboardInfo.date}}</p>
           </div>
         </div>
         <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
@@ -40,6 +41,7 @@
             <p class="card-text">Qualité : {{dashboardInfo.airQuality.quality}}</p>
             <p class="card-text">Concentration de particules : </p>
             <p class="card-text">PM2.5 : {{dashboardInfo.airQuality.pm25}}</p> <p class="card-text">PM10 : {{dashboardInfo.airQuality.pm10}}</p>  <p class="card-text">O2 : {{dashboardInfo.airQuality.o3}}</p>
+            <p class="card-text float-right">Date : {{dashboardInfo.date}}</p>
           </div>
         </div>
         <div class="tab-pane fade show  p-3" id="three" role="tabpanel" aria-labelledby="three-tab">
@@ -50,6 +52,7 @@
             <h5 class="card-title">Condition de circulation</h5>
             <p class="card-text">Temps de parcours normal : {{dashboardInfo.carTraffic.travelTime}}</p>
             <p class="card-text">Temps de parcours estimé actuel : {{dashboardInfo.carTraffic.estimatedTravelTime}}</p>
+            <p class="card-text float-right">Date : {{dashboardInfo.date}}</p>
           </div>
         </div>
         <div class="tab-pane fade show  p-3" id="four" role="tabpanel" aria-labelledby="four-tab">
@@ -64,6 +67,7 @@
               <td>{{departure.destination}}</td>
               <td class="ml-2">{{departure.message}}</td>
             </tr>
+            <p class="card-text float-right">Date : {{dashboardInfo.date}}</p>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import {Commuting} from './commuting';
 
 
 export interface DashboardInformations {
-
+  date: string;
   weather: Weather;
   airQuality: AirQuality;
   carTraffic: Traffic;
