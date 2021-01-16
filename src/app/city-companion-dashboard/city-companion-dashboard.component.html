@@ -28,7 +28,7 @@
         <div class="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
           <div class="card-body">
             <h5 class="card-title">Meteo</h5>
-            <p class="card-text">Pluie : {{dashboardInfo.weather.rain}}  ({{dashboardInfo.weather.rainProbability}})</p>
+            <p class="card-text">Pluie : {{dashboardInfo.weather.rain}}  ({{dashboardInfo.weather.rainProbability}}%)</p>
             <p class="card-text">Température : {{dashboardInfo.weather.temperature}}</p>
             <p class="card-text">Température ressentie: {{dashboardInfo.weather.feelsLike}}</p>
           </div>
@@ -56,12 +56,13 @@
           <h5 class="card-title">Transport en commun</h5>
           <div class="card-body">
             <h5 class="card-title">Condition du reseau de transport en commun</h5>
+            <p class="card-text col-6">Ligne : {{dashboardInfo.publicTransport.transportLine}}</p>
             <p class="card-text col-6">Arret : {{dashboardInfo.publicTransport.station}}</p>
-            <p class="card-text">Etat de la ligne : {{dashboardInfo.publicTransport.status}}</p>
+            <p class="card-text">Etat de la ligne : {{dashboardInfo.publicTransport.lineStatus}}</p>
             <p class="card-text">Prochains départ :   </p>
-            <tr *ngFor="let departure of dashboardInfo.publicTransport.departures">
+            <tr *ngFor="let departure of dashboardInfo.publicTransport.nextDepartures">
               <td>{{departure.destination}}</td>
-              <td>{{departure.message}}</td>
+              <td class="ml-2">{{departure.message}}</td>
             </tr>
           </div>
         </div>
