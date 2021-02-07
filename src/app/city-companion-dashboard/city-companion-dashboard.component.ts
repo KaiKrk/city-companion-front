@@ -19,6 +19,7 @@ export class CityCompanionDashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     this.dashboardInfo = this.dashboardService.getDashboardInfo(this.currentUser.id);
   }
 

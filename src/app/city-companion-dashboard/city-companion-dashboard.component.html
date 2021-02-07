@@ -29,8 +29,8 @@
           <div class="card-body">
             <h5 class="card-title">Meteo</h5>
             <p class="card-text">Pluie : {{dashboardInfo.weather.rain}}  ({{dashboardInfo.weather.rainProbability}}%)</p>
-            <p class="card-text">Température : {{dashboardInfo.weather.temperature}}</p>
-            <p class="card-text">Température ressentie: {{dashboardInfo.weather.feelsLike}}</p>
+            <p class="card-text">Température : {{dashboardInfo.weather.temperature}} °C</p>
+            <p class="card-text">Température ressentie: {{dashboardInfo.weather.feelsLike}} °C</p>
             <p class="card-text float-right">Date : {{dashboardInfo.date}}</p>
           </div>
         </div>
@@ -40,7 +40,7 @@
             <p class="card-text">Index : {{dashboardInfo.airQuality.index}}</p>
             <p class="card-text">Qualité : {{dashboardInfo.airQuality.quality}}</p>
             <p class="card-text">Concentration de particules : </p>
-            <p class="card-text">PM2.5 : {{dashboardInfo.airQuality.pm25}}</p> <p class="card-text">PM10 : {{dashboardInfo.airQuality.pm10}}</p>  <p class="card-text">O2 : {{dashboardInfo.airQuality.o3}}</p>
+            <p class="card-text">PM2.5 : {{dashboardInfo.airQuality.pm25}} µg/m³</p> <p class="card-text">PM10 : {{dashboardInfo.airQuality.pm10}} µg/m³</p>  <p class="card-text">O2 : {{dashboardInfo.airQuality.o3}} µg/m³</p>
             <p class="card-text float-right">Date : {{dashboardInfo.date}}</p>
           </div>
         </div>
@@ -64,7 +64,7 @@
             <p class="card-text">Etat de la ligne : {{dashboardInfo.publicTransport.lineStatus}}</p>
             <p class="card-text">Prochains départ :   </p>
             <tr *ngFor="let departure of dashboardInfo.publicTransport.nextDepartures">
-              <td>{{departure.destination}}</td>
+              <td>{{departure.destination}} : </td>
               <td class="ml-2">{{departure.message}}</td>
             </tr>
             <p class="card-text float-right">Date : {{dashboardInfo.date}}</p>

@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {Account} from '../models/account.model';
 import {environment} from '../../environments/environment.prod';
 import {Router} from '@angular/router';
+import {DashboardService} from './dashboard.service';
 
 @Injectable()
 export class AuthService {
